@@ -8,6 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:solfacil_tools_sdk/logger.dart';
 import 'package:solfacil_tools_sdk/trackers.dart';
 
-import '../firebase/firebase.dart';
+import '../adapters/adapters.dart';
 
 part 'solfacil_firebase_sdk.dart';
