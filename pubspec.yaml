@@ -1,7 +1,7 @@
 name: solfacil_firebase_sdk
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: SDK de integração com o Firebase
+version: 1.0.0
+homepage: https://github.com/solfacil/cp.mt.sdk-firebase-mobile
 publish_to: none
 
 environment:
@@ -20,7 +20,7 @@ dependencies:
   solfacil_tools_sdk:
     git:
       url: https://github.com/solfacil/sdk-tools-mobile
-      ref: feature/SPR-729-remove-firebase-from-sdk
+      ref: main
 
 dev_dependencies:
   flutter_test:
