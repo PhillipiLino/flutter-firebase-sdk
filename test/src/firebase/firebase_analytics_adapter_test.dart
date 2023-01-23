@@ -20,7 +20,7 @@ main() {
     const eventInfos = {'name': 'teste'};
 
     // Act
-    await adapter.logEvents(eventName: eventName, eventInfos: eventInfos);
+    await adapter.logEvent(eventName: eventName, eventInfos: eventInfos);
 
     // Assert
     verify(() => analytics.logEvent(name: eventName, parameters: eventInfos))

@@ -5,7 +5,7 @@ class FirebaseAnalyticsAdapter {
 
   FirebaseAnalyticsAdapter(this.analytics);
 
-  Future logEvents({
+  Future logEvent({
     required String eventName,
     required Map<String, dynamic> eventInfos,
   }) async {

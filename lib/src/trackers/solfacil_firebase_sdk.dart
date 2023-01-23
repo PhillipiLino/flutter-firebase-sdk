@@ -3,6 +3,8 @@ part of solfacil_tools_sdk;
 class SolfacilFirebaseSDK extends IExternalTrackers {
   late final FirebaseDatabaseAdapter databaseAdapter;
   late final FirebaseAnalyticsAdapter analyticsAdapter;
+  late final FirebaseCrashlyticsAdapter crashlyticsAdapter;
+  late final FirebaseMessagingAdapter messagingAdapter;
 
   static initialize({String? name, FirebaseOptions? options}) async {
     await Firebase.initializeApp(name: name, options: options);
@@ -28,9 +30,11 @@ class SolfacilFirebaseSDK extends IExternalTrackers {
     try {
       final firestore = FirebaseFirestore.instance;
       final analytics = FirebaseAnalytics.instance;
+      final messaging = FirebaseMessaging.instance;
 
       databaseAdapter = FirebaseDatabaseAdapter(firestore);
       analyticsAdapter = FirebaseAnalyticsAdapter(analytics);
+      messagingAdapter = FirebaseMessagingAdapter(messaging);
       return true;
     } catch (e) {
       LogManager.shared.logError('FIREBASE_SDK: $e');
@@ -86,7 +90,7 @@ class SolfacilFirebaseSDK extends IExternalTrackers {
     required Map<String, dynamic> infos,
   }) async {
     final eventName = '${btnName}_clicked';
-    await analyticsAdapter.logEvents(
+    await analyticsAdapter.logEvent(
       eventName: eventName,
       eventInfos: infos,
     );
@@ -99,7 +103,7 @@ class SolfacilFirebaseSDK extends IExternalTrackers {
     String eventName, {
     required Map<String, dynamic> infos,
   }) async {
-    await analyticsAdapter.logEvents(eventName: eventName, eventInfos: infos);
+    await analyticsAdapter.logEvent(eventName: eventName, eventInfos: infos);
     return;
   }
 
@@ -116,7 +120,7 @@ class SolfacilFirebaseSDK extends IExternalTrackers {
     required Map<String, dynamic>? infos,
   }) async {
     if (infos != null) {
-      await analyticsAdapter.logEvents(
+      await analyticsAdapter.logEvent(
         eventName: 'close_page_infos',
         eventInfos: infos,
       );
@@ -133,5 +137,21 @@ class SolfacilFirebaseSDK extends IExternalTrackers {
     final collection = await databaseAdapter.getCollection(collectionName);
     await databaseAdapter.addFieldToCollection(collection, info, path);
     return;
+  }
+
+  subscribeToTopics(List<String> topics) async {
+    return await messagingAdapter.subscribeToTopics(topics);
+  }
+
+  unsubscribeFromTopics(List<String> topics) async {
+    return await messagingAdapter.unsubscribeFromTopics(topics);
+  }
+
+  Future<bool> requestPermission() async {
+    return await messagingAdapter.requestPermission();
+  }
+
+  Future<String> getMessagingToken() async {
+    return await messagingAdapter.getMessagingToken();
   }
 }
