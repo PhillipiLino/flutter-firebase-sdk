@@ -7,4 +7,4 @@
    - FirebaseFirestore
    - FirebaseMessaging
 
-[1.0.0]: https://github.com/solfacil/cp.mt.sdk-firebase-mobile/releases/tag/1.0.0
+[1.0.0]: https://github.com/PhillipiLino/flutter-firebase-sdk/releases/tag/1.0.0

@@ -1,4 +1,4 @@
-# Solfacil Firebase SDK Mobile [![Coverage Status](https://coveralls.io/repos/github/solfacil/cp.mt.sdk-firebase-mobile/badge.svg?branch=main&t=9PHPiw)](https://coveralls.io/github/solfacil/cp.mt.sdk-firebase-mobile?branch=main)
+# Firebase SDK Mobile
 
 ![Github Badge](https://img.shields.io/badge/Version-1.0.0-<>)
 ![Github Badge](https://img.shields.io/badge/-Flutter-3dbbe3?&logo=Flutter)
@@ -9,51 +9,47 @@ Pacote de integração do Firebase.
 
 # Sumário
 
-- [Informações técnicas](#informações-técnicas)
+- [Firebase SDK Mobile](#firebase-sdk-mobile)
+- [Sumário](#sumário)
+  - [Informações técnicas](#informações-técnicas)
     - [Versão atual](#versão-atual)
     - [Dependências](#dependências)
-- [Instalação](#instalação)
-- [Implementação](#implementação)
-    - [Requisitos de implementação](#requisitos-de-implementação)
-    - [Passos](#passos)
-- [Componentes](#classes)
-    - [CrashlyticsErrorReport](#crashlyticserrorreport)
-        - [RecordException](#recordexception)
-    - [FirebaseAnalyticsAdapter](#firebaseanalyticsadapter)
-        - [logEvent](#logevent)
-        - [setDefaultParameters](#setdefaultparameters)
-        - [setUserProperty](#setuserproperty)
-        - [setUserId](#setuserid)
-        - [logLogin](#loglogin)
-        - [setCurrentPage](#setcurrentpage)
-    - [FirebaseCrashlyticsAdapter](#firebasecrashlyticsadapter)
-        - [logEvent](#logevent)
-    - [FirebaseDatabaseAdapter](#firebasedatabaseadapter)
-        - [getCollection](#getcollection)
-        - [addFieldToCollection](#addfieldtocollection)
-        - [saveUserLogin](#saveuserlogin)
-    - [FirebaseMessagingAdapter](#firebasemessagingadapter)
-        - [subscribeToTopic](#subscribetotopic)
-        - [subscribeToTopics](#subscribetotopics)
-        - [unsubscribeFromTopic](#unsubscribefromtopic)
-        - [unsubscribeFromTopics](#unsubscribefromtopics)
-        - [requestPermission](#requestpermission)
-        - [getMessagingToken](#getmessagingtoken)
-    - [SolfacilFirebaseSDK](#solfacilfirebasesdk)
-        - [initialize](#initialize)
-        - [recordCrashlyticsError](#recordcrashlyticserror)
-        - [logSuccessLogin](#logsuccesslogin)
-        - [setLogedUser](#setlogeduser)
-        - [removeUserData](#removeuserdata)
-        - [trackButtonClick](#trackbuttonclick)
-        - [trackCustomEvent](#trackcustomevent)
-        - [trackPageOpen](#trackpageopen)
-        - [stopTrackPage](#stoptrackpage)
-        - [sendData](#senddata)
-        - [subscribeToTopics](#subscribetotopics)
-        - [unsubscribeFromTopics](#unsubscribefromtopics)
-        - [requestPermission](#requestpermission)
-        - [getMessagingToken](#getmessagingtoken)
+  - [Instalação](#instalação)
+  - [Implementação](#implementação)
+  - [Componentes](#componentes)
+  - [**CrashlyticsErrorReport**](#crashlyticserrorreport)
+    - [**RecordException**](#recordexception)
+  - [**FirebaseAnalyticsAdapter**](#firebaseanalyticsadapter)
+    - [**logEvent**](#logevent)
+    - [**setDefaultParameters**](#setdefaultparameters)
+    - [**setUserProperty**](#setuserproperty)
+  - [**FirebaseCrashlyticsAdapter**](#firebasecrashlyticsadapter)
+    - [**logEvent**](#logevent-1)
+  - [**FirebaseDatabaseAdapter**](#firebasedatabaseadapter)
+    - [**getCollection**](#getcollection)
+    - [**addFieldToCollection**](#addfieldtocollection)
+    - [**saveUserLogin**](#saveuserlogin)
+  - [**FirebaseMessagingAdapter**](#firebasemessagingadapter)
+    - [**subscribeToTopics**](#subscribetotopics)
+    - [**unsubscribeFromTopics**](#unsubscribefromtopics)
+    - [**requestPermission**](#requestpermission)
+    - [**getMessagingToken**](#getmessagingtoken)
+  - [**FirebaseSDK**](#firebasesdk)
+    - [**initialize**](#initialize)
+    - [**recordCrashlyticsError**](#recordcrashlyticserror)
+    - [**logSuccessLogin**](#logsuccesslogin)
+    - [**setLogedUser**](#setlogeduser)
+    - [**removeUserData**](#removeuserdata)
+    - [**trackButtonClick**](#trackbuttonclick)
+    - [**trackCustomEvent**](#trackcustomevent)
+    - [**trackPageOpen**](#trackpageopen)
+    - [**stopTrackPage**](#stoptrackpage)
+    - [**sendData**](#senddata)
+    - [**subscribeToTopics**](#subscribetotopics-1)
+    - [**unsubscribeFromTopics**](#unsubscribefromtopics-1)
+    - [**requestPermission**](#requestpermission-1)
+    - [**getMessagingToken**](#getmessagingtoken-1)
+    - [FIM](#fim)
 
 ## Informações técnicas
 ---
@@ -68,7 +64,7 @@ Pacote de integração do Firebase.
 - `firebase_analytics`: ^9.2.1
 - `firebase_crashlytics`: ^2.8.6
 - `cloud_firestore`: ^3.4.0
-- `solfacil_tools_sdk`:
+- `firebase_sdk`:
 - `flutter_lints`: ^2.0.0
 - `mocktail`: ^0.3.0
 
@@ -81,15 +77,15 @@ Adicionar a seguinte dependência (com base em como você vai utilizar) no seu a
 
 - Versão do Github:
 ```yaml
-solfacil_firebase_sdk:
+firebase_sdk:
     git:
-        url: https://github.com/solfacil/cp.mt.sdk-firebase-mobile
+        url: https://github.com/PhillipiLino/flutter-firebase-sdk
         ref: {nome_da_branch}
 ```
 
 - Versão local:
 ```yaml
-solfacil_firebase_sdk:
+firebase_sdk:
     path: {caminho_do_pacote}
 ```
 
@@ -103,7 +99,7 @@ solfacil_firebase_sdk:
 Para utilizar os seviços do Firebase em seu projeto, é necessário inicializar o Firebase da seguinte forma:
 
 ```dart
-await SolfacilFirebaseSDK.initialize(
+await FirebaseSDK.initialize(
     name: `nome_do_projeto`,
     options: `arquivo_de_configuracao`,
 );
@@ -112,8 +108,8 @@ await SolfacilFirebaseSDK.initialize(
 Exemplo:
 
 ```dart
-await SolfacilFirebaseSDK.initialize(
-    name: 'solfacil',
+await FirebaseSDK.initialize(
+    name: 'app_name',
     options: DefaultFirebaseOptions.currentPlatform,
 );
 ```
@@ -124,12 +120,12 @@ Para usar o crashlytics e mapear os erros, faça da seguinte maneira no `main` d
 void main() async {
     runZonedGuarded<Future<void>>(() async {
         WidgetsFlutterBinding.ensureInitialized();
-        await SolfacilFirebaseSDK.initialize(
-            name: 'solfacil',
+        await FirebaseSDK.initialize(
+            name: 'app_name',
             options: DefaultFirebaseOptions.currentPlatform,
         );
 
-        FlutterError.onError = SolfacilFirebaseSDK.recordCrashlyticsFlutterFatalError;
+        FlutterError.onError = FirebaseSDK.recordCrashlyticsFlutterFatalError;
 
         final app = ModularApp(
             module: AppModule(),
@@ -141,7 +137,7 @@ void main() async {
         Modular.setInitialRoute(splashRoute);
     },
     (error, stack) {
-      SolfacilFirebaseSDK.recordCrashlyticsError(error, stack, true);
+      FirebaseSDK.recordCrashlyticsError(error, stack, true);
     },
   );
 }
@@ -329,11 +325,11 @@ Future<String> getMessagingToken()
 
 <br/>
 
-## **SolfacilFirebaseSDK**
+## **FirebaseSDK**
 ------
 
 ```dart
-SolfacilFirebaseSDK();
+FirebaseSDK();
 ```
 </br>
 

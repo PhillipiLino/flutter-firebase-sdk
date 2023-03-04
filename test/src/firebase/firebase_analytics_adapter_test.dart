@@ -1,7 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:solfacil_firebase_sdk/src/adapters/adapters.dart';
+import 'package:firebase_sdk/src/adapters/adapters.dart';
 
 import '../../doubles/mocks/firebase_analytics_mock.dart';
 

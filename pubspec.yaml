@@ -1,7 +1,7 @@
-name: solfacil_firebase_sdk
+name: firebase_sdk
 description: SDK de integração com o Firebase
 version: 1.0.0
-homepage: https://github.com/solfacil/cp.mt.sdk-firebase-mobile
+homepage: https://github.com/PhillipiLino/flutter-firebase-sdk
 publish_to: none
 
 environment:
@@ -17,9 +17,9 @@ dependencies:
   firebase_crashlytics: ^3.0.11
   firebase_messaging: ^14.2.1
   firebase_in_app_messaging: ^0.7.0+10
-  solfacil_tools_sdk:
+  commons_tools_sdk:
     git:
-      url: https://github.com/solfacil/sdk-tools-mobile
+      url: https://github.com/PhillipiLino/flutter-commons-tools-sdk
       ref: main
 
 dev_dependencies:

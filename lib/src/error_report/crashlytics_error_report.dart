@@ -1,4 +1,4 @@
-part of solfacil_tools_sdk;
+part of firebase_sdk;
 
 class CrashlyticsErrorReport extends IErrorReport {
   late final FirebaseCrashlyticsAdapter crashlyticsAdapter;

@@ -1,6 +1,6 @@
-part of solfacil_tools_sdk;
+part of firebase_sdk;
 
-class SolfacilFirebaseSDK extends IExternalTrackers {
+class FirebaseSDK extends IExternalTrackers {
   late final FirebaseDatabaseAdapter databaseAdapter;
   late final FirebaseAnalyticsAdapter analyticsAdapter;
   late final FirebaseCrashlyticsAdapter crashlyticsAdapter;
@@ -22,7 +22,7 @@ class SolfacilFirebaseSDK extends IExternalTrackers {
     );
   }
 
-  SolfacilFirebaseSDK() {
+  FirebaseSDK() {
     _initializeApp();
   }
 
